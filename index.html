@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ARGAV Advertising Studio</title>
+
+    <meta name="theme-color" content="#111111">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- PWA SETTINGS -->
+
+<link rel="manifest" href="./manifest.json">
+
+<meta name="theme-color" content="#000000">
+
+<meta name="description"
+content="ARGAV Advertising Studio – Creative Printing, Branding, Advertising and Customized Gifts.">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style"
+content="black">
+
+<meta name="apple-mobile-web-app-title" content="ARGAV">
+
+<link rel="apple-touch-icon"
+href="argav-logo.png">
+<body>
+
+<header>
+    <div class="logo">
+        <img src="Argav logo.jpeg" alt="ARGAV Logo">
+        <div>
+            <h1>ARGAV</h1>
+            <p>ADVERTISING STUDIO</p>
+        </div>
+    </div>
+
+    <button id="installBtn" class="hidden">
+        Install App
+    </button>
+</header>
+
+<section class="hero">
+    <p>WELCOME TO ARGAV</p>
+
+    <h2>
+        Your Vision,<br>
+        <span>Our Creation.</span>
+    </h2>
+
+    <p>
+        Wedding Essentials | Printing | Photography
+    </p>
+
+    <a href="#services" class="main-btn">
+        Explore Services
+    </a>
+</section>
+
+<section class="services" id="services">
+
+    <h2>Our Services</h2>
+
+    <div class="categories">
+
+        <button onclick="showProducts('All')">
+            All
+        </button>
+
+        <button onclick="showProducts('Wedding')">
+            Wedding
+        </button>
+
+        <button onclick="showProducts('Business & Promotional Printing')">
+            Business & Printing
+        </button>
+
+        <button onclick="showProducts('Photography')">
+            Photography
+        </button>
+
+    </div>
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Search products..."
+        oninput="searchProducts()"
+    >
+
+    <div id="productContainer" class="products"></div>
+
+</section>
+
+<section class="admin">
+
+    <h2>Manage Products</h2>
+
+    <button onclick="openProductForm()">
+        + Add New Product
+    </button>
+
+    <div id="productForm" class="form hidden">
+
+        <h3>Add Product</h3>
+
+        <select id="category">
+            <option>Wedding</option>
+            <option>Business & Promotional Printing</option>
+            <option>Photography</option>
+        </select>
+
+        <input
+            type="text"
+            id="productName"
+            placeholder="Product Name"
+        >
+
+        <textarea
+            id="description"
+            placeholder="Product Description"
+        ></textarea>
+
+        <input
+            type="number"
+            id="price"
+            placeholder="Starting Price"
+        >
+
+        <label>Upload Product Photos</label>
+
+        <input
+            type="file"
+            id="photos"
+            accept="image/*"
+            multiple
+        >
+
+        <div id="preview"></div>
+
+        <button onclick="addProduct()">
+            Save Product
+        </button>
+
+        <button onclick="closeProductForm()">
+            Cancel
+        </button>
+
+    </div>
+
+</section>
+
+<section class="orders">
+
+    <h2>Order Management</h2>
+
+    <button onclick="openOrderForm()">
+        + Create New Order
+    </button>
+
+    <div id="orderForm" class="form hidden">
+
+        <h3>Customer Details</h3>
+
+        <input
+            type="text"
+            id="customerName"
+            placeholder="Customer Name"
+        >
+
+        <input
+            type="tel"
+            id="customerPhone"
+            placeholder="WhatsApp Number with Country Code"
+        >
+
+        <input
+            type="text"
+            id="orderProduct"
+            placeholder="Product / Service"
+        >
+
+        <input
+            type="number"
+            id="quotation"
+            placeholder="Quotation Amount"
+        >
+
+        <input
+            type="number"
+            id="paid"
+            placeholder="Amount Received"
+        >
+
+        <textarea
+            id="orderDetails"
+            placeholder="Order Details"
+        ></textarea>
+
+        <select id="orderStatus">
+            <option>Enquiry</option>
+            <option>Quotation Sent</option>
+            <option>Order Confirmed</option>
+            <option>Payment Received</option>
+            <option>Ready for Delivery</option>
+            <option>Delivered</option>
+        </select>
+
+        <button onclick="saveOrder()">
+            Save Order
+        </button>
+
+        <button onclick="closeOrderForm()">
+            Cancel
+        </button>
+
+    </div>
+
+    <div id="orderContainer"></div>
+
+</section>
+
+<footer>
+
+    <h2>ARGAV</h2>
+
+    <p>ADVERTISING STUDIO</p>
+
+    <p>Your Vision, Our Creation.</p>
+
+    <p>© 2026 Argav Advertising Studio</p>
+
+</footer>
+<script>
+if ("serviceWorker" in navigator) {
+
+  window.addEventListener("load", () => {
+
+    navigator.serviceWorker.register("./sw.js")
+
+      .then((registration) => {
+        console.log(
+          "ARGAV PWA Service Worker Registered!",
+          registration.scope
+        );
+      })
+
+      .catch((error) => {
+        console.error(
+          "Service Worker Registration Failed:",
+          error
+        );
+      });
+
+  });
+
+}
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

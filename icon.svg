@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+
+    <defs>
+        <linearGradient id="rainbow" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ff3030"/>
+            <stop offset="18%" stop-color="#ff8c00"/>
+            <stop offset="32%" stop-color="#ffe600"/>
+            <stop offset="48%" stop-color="#39ff88"/>
+            <stop offset="65%" stop-color="#00e5ff"/>
+            <stop offset="82%" stop-color="#176bff"/>
+            <stop offset="100%" stop-color="#ff168f"/>
+        </linearGradient>
+
+        <filter id="glow">
+            <feGaussianBlur stdDeviation="7" result="blur"/>
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- Background -->
+    <rect width="512" height="512" rx="95" fill="#03030a"/>
+
+    <!-- Outer Border -->
+    <rect x="12" y="12" width="488" height="488"
+          rx="85" fill="none"
+          stroke="url(#rainbow)" stroke-width="3"/>
+
+    <!-- A Letter -->
+    <path d="M256 65 L75 410 L145 410 L256 190 L367 410 L437 410 Z"
+          fill="url(#rainbow)"
+          stroke="#ffffff"
+          stroke-opacity="0.15"
+          stroke-width="3"
+          filter="url(#glow)"/>
+
+    <!-- A Inner Cutout -->
+    <path d="M256 215 L215 300 L297 300 Z"
+          fill="#03030a"/>
+
+    <!-- Orbit -->
+    <ellipse cx="256" cy="290" rx="205" ry="55"
+             transform="rotate(-13 256 290)"
+             fill="none"
+             stroke="url(#rainbow)"
+             stroke-width="13"
+             filter="url(#glow)"/>
+
+    <!-- ARGAV Text -->
+    <text x="256" y="465"
+          text-anchor="middle"
+          font-family="Georgia, serif"
+          font-size="48"
+          font-weight="bold"
+          letter-spacing="5"
+          fill="url(#rainbow)">
+        ARGAV
+    </text>
+
+</svg>
